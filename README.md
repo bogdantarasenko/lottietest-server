@@ -57,5 +57,4 @@ Clone the repository and install dependencies:
 git clone https://github.com/bogdantarasenko/lottietest-server
 cd lottietest-server
 npm install
-npm start
 npm run start:dev
