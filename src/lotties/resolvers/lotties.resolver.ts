@@ -6,14 +6,12 @@ import {
   Mutation,
   ResolveField,
 } from "@nestjs/graphql";
-
 // @ts-ignore
 import { GraphQLUpload, FileUpload } from 'graphql-upload';
 
 import { LottieLoader } from "../loaders/lottie.loader";
 import { LottiesService } from "../services/lotties.service";
 import { CurrentUser, Public } from "../../auth/decorators";
-
 
 // common
 import { Pagination } from "../../common/pagination/pagination.type";
