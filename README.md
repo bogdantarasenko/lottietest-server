@@ -1,4 +1,4 @@
-# Lottie Files Management Application
+# Lottie Files Management Application Server
 
 A comprehensive application designed to manage Lottie animation files with a robust backend, featuring NestJS, GraphQL, MongoDB, and advanced functionalities for a high-quality user experience.
 
