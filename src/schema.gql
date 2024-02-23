@@ -1,0 +1,112 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  username: String!
+  email: String!
+  isActive: Boolean!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type JWTTokenResponseType {
+  token: String
+  success: Boolean!
+  user: User
+}
+
+type Lottie {
+  id: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  tags: [String!]!
+  author: User!
+  path: String
+}
+
+type Success {
+  success: Boolean!
+}
+
+type PaginatedLottie {
+  totalCount: Float!
+  hasPreviousPage: Boolean!
+  hasNextPage: Boolean!
+  page: Float!
+  totalPages: Float!
+  nextPage: Float!
+  prevPage: Float!
+  results: [Lottie!]!
+}
+
+type Query {
+  """returns current logged in user"""
+  currentUser: User!
+
+  """get all tags from lotties"""
+  getTags: [String!]!
+
+  """get all lotties"""
+  getAll(input: PaginationArgs): PaginatedLottie!
+
+  """get my lotties"""
+  getMy(input: PaginationArgs): PaginatedLottie!
+
+  """get by lottie id"""
+  getOne(filter: LottieFilterInput!): Lottie!
+}
+
+input PaginationArgs {
+  page: Int
+  pageSize: Int
+  tags: [String!]
+}
+
+input LottieFilterInput {
+  id: String
+  tags: [String!]
+}
+
+type Mutation {
+  """create a new user"""
+  createUser(input: CreateUserInput!): User!
+
+  """login using email/password to obtain a JWT token"""
+  login(input: LoginInputType!): JWTTokenResponseType!
+
+  """create a new lottie"""
+  create(file: Upload!, input: CreateLottieInput!): Lottie!
+
+  """delete an existing lottie"""
+  delete(input: LottieIdInput!): Success!
+}
+
+input CreateUserInput {
+  username: String!
+  email: String!
+  confirmPassword: String!
+  password: String!
+}
+
+input LoginInputType {
+  email: String!
+  password: String!
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+input CreateLottieInput {
+  tags: [String!]
+}
+
+input LottieIdInput {
+  lottieId: String!
+}
