@@ -38,7 +38,11 @@ async function bootstrap() {
 
   mongoose.set("debug", true);
 
-  const server = await app.listen(configService.getOrThrow('app.port', { infer: true }));
+  console.log('--------------------------------------------------------------------------------------');
+  console.log('Listen on port', configService.get('app').port);
+  console.log('--------------------------------------------------------------------------------------');
+
+  const server = await app.listen(configService.get('app').port);
 
   server.setTimeout(60 * 1000);
   server.keepAliveTimeout = 60 * 1000;
