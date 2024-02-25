@@ -10,7 +10,7 @@ import { Lottie, LottieDocument } from "../schemas/lottie.schema";
 
 // common
 import { CrudService } from "../../common/services/crud.service";
-import { FileUploadService } from "../../common/services/file-upload.service";
+import { FileUploadService } from "../../files/files.service";
 
 @Injectable()
 export class LottiesService extends CrudService<

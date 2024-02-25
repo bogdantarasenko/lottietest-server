@@ -27,12 +27,14 @@ import { PaginatedLottie } from "../dto/lottie/lottie.type";
 import { LottieIdInput } from "../dto/lottie/lottie-id.input";
 import { LottieFilterInput } from "../dto/lottie/lottie-filter.input";
 import { CreateLottieInput } from "../dto/lottie/create-lottie.input";
+import { FileUploadService } from "src/files/files.service";
 
 @Resolver(() => Lottie)
 export class LottieResolver {
   constructor(
     private readonly lottieLoader: LottieLoader,
     private readonly lottieService: LottiesService,
+    private readonly fileUploadService: FileUploadService,
   ) { }
 
   @ResolveField(() => User)
@@ -126,6 +128,8 @@ export class LottieResolver {
     const success = await this.lottieService.delete({
       _id: lottieDeleteInput.lottieId,
     });
+
+    await this.fileUploadService.deleteFile(lottie.path);
 
     return { success: success ? true : false };
   }

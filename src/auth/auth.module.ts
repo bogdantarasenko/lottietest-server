@@ -6,14 +6,15 @@ import { UsersModule } from "../users/users.module";
 import { JwtStrategy } from "./strategies/jwt.strategy";
 import { AuthResolver } from "./auth.resolver";
 import { JwtAuthGuard } from "./auth.guard";
+import { AllConfigType } from "src/config/config.type";
 
 @Module({
   imports: [
     forwardRef(() => UsersModule),
     JwtModule.registerAsync({
       inject: [ConfigService],
-      useFactory: async (config: ConfigService) => ({
-        secret: config.get<string>("SECRET_KEY"),
+      useFactory: async (config: ConfigService<AllConfigType>) => ({
+        secret: config.get("auth").secret,
         signOptions: { expiresIn: "1d" },
       }),
     }),
