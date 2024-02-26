@@ -12,9 +12,9 @@ import fileConfig from "./config/file.config";
 import databaseConfig from "./config/database.config";
 import { AllConfigType } from "./config/config.type";
 
-import { FilesModule } from "./files/files.module";
-import { UsersModule } from "./users/users.module";
-import { LottiesModule } from "./lotties/lottie.module";
+import { FilesModule } from "./modules/files/files.module";
+import { UsersModule } from "./modules/users/users.module";
+import { LottiesModule } from "./modules/lotties/lottie.module";
 
 @Module({
   imports: [

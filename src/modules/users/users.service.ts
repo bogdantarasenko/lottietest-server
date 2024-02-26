@@ -4,7 +4,7 @@ import { forwardRef, Inject, Injectable } from "@nestjs/common";
 
 import { AuthService } from "../auth/auth.service";
 
-import { CrudService } from "../common/services/crud.service";
+import { CrudService } from "../../common/services/crud.service";
 import { User, UserDocument } from "./users.schema";
 
 import { CreateUserInput } from "./dto/create-user.input";

@@ -3,7 +3,7 @@ import { Document } from "mongoose";
 import { ObjectType, Field } from "@nestjs/graphql";
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 
-import { User } from "../../users/users.schema";
+import { User } from "../users/users.schema";
 import { BaseSchema } from "../../common/base.schema";
 
 @ObjectType()

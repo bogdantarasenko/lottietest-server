@@ -8,7 +8,7 @@ import { graphqlUploadExpress } from "graphql-upload";
 import { NestFactory, Reflector } from "@nestjs/core";
 
 import { AppModule } from "./app.module";
-import { JwtAuthGuard } from "./auth/auth.guard";
+import { JwtAuthGuard } from "./modules/auth/auth.guard";
 import { AllConfigType } from "./config/config.type";
 import { MongoErrorFilter } from "./common/mongo-error.filter";
 

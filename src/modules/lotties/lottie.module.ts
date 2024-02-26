@@ -3,10 +3,10 @@ import { MongooseModule } from "@nestjs/mongoose";
 
 import { FilesModule } from "../files/files.module";
 import { UsersModule } from "../users/users.module";
-import { LottieLoader } from "./loaders/lottie.loader";
-import { LottiesService } from "./services/lotties.service";
-import { LottieResolver } from "./resolvers/lotties.resolver";
-import { Lottie, LottieSchema } from "./schemas/lottie.schema";
+import { LottieLoader } from "./lottie.loader";
+import { LottiesService } from "./lotties.service";
+import { LottieResolver } from "./lotties.resolver";
+import { Lottie, LottieSchema } from "./lottie.schema";
 
 @Module({
   providers: [

@@ -1,10 +1,10 @@
 import { Module } from "@nestjs/common";
-import { FileUploadService } from "./services/file-upload.service";
-import { FilesController } from "./files.controller";
+import { FilesService } from "../modules/files/files.service";
+import { FilesController } from "../modules/files/files.controller";
 
 @Module({
   controllers: [FilesController],
-  providers: [FileUploadService],
-  exports: [FileUploadService],
+  providers: [FilesService],
+  exports: [FilesService],
 })
 export class CommonModule {}

@@ -3,14 +3,14 @@ import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 
 // dto
-import { CreateLottieInput } from "../dto/lottie/create-lottie.input";
+import { CreateLottieInput } from "./dto/lottie/create-lottie.input";
 
 // schema
-import { Lottie, LottieDocument } from "../schemas/lottie.schema";
+import { Lottie, LottieDocument } from "./lottie.schema";
 
 // common
 import { CrudService } from "../../common/services/crud.service";
-import { FileUploadService } from "../../files/files.service";
+import { FilesService } from "../files/files.service";
 
 @Injectable()
 export class LottiesService extends CrudService<
@@ -20,7 +20,7 @@ export class LottiesService extends CrudService<
   constructor(
     @InjectModel(Lottie.name)
     private readonly lottieModel: Model<LottieDocument>,
-    private readonly fileUploadService: FileUploadService,
+    private readonly fileUploadService: FilesService,
   ) {
     super(lottieModel);
   }

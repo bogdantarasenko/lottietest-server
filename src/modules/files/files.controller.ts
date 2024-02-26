@@ -2,13 +2,13 @@ import { Response } from "express";
 import { ConfigService } from '@nestjs/config';
 import { Controller, Get, Param, Res } from "@nestjs/common";
 import { AllConfigType } from 'src/config/config.type';
-import { FileUploadService } from "./files.service";
+import { FilesService } from "./files.service";
 import { Public } from "../auth/decorators";
 
 @Controller("files")
 export class FilesController {
   constructor(
-    private readonly fileUploadService: FileUploadService,
+    private readonly fileUploadService: FilesService,
     private readonly configService: ConfigService<AllConfigType>
   ) {}
 

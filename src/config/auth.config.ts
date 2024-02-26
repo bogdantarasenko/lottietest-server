@@ -12,6 +12,6 @@ export default registerAs<AuthConfig>('auth', () => {
   validateConfig(process.env, EnvironmentVariablesValidator);
 
   return {
-    secret: process.env.AUTH_JWT_SECRET,
+    secret: process.env.AUTH_JWT_SECRET || 'default_secret',
   };
 });

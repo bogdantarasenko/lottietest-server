@@ -8,7 +8,7 @@ import {
 } from "mongoose";
 import { NotFoundException } from "@nestjs/common";
 import { Pagination } from "../pagination/pagination.type";
-import { User } from "../../users/users.schema";
+import { User } from "../../modules/users/users.schema";
 import { BaseSchema } from "../base.schema";
 
 type TDocument<T> = T & Document;

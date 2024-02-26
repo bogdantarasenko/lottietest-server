@@ -1,11 +1,18 @@
+require('dotenv').config({ path: '.env.test' });
+
+import { ConfigModule } from "@nestjs/config";
+import { NotFoundException } from "@nestjs/common";
 import { Test, TestingModule } from "@nestjs/testing";
 import { AuthResolver } from "./auth.resolver";
-import { MongooseTestModule } from "../common/mongoose-testing.module";
+import { MongooseTestModule } from "../../common/mongoose-testing.module";
 import { UsersService } from "../users/users.service";
 import { UsersModule } from "../users/users.module";
-import { ConfigModule } from "@nestjs/config";
 import { AuthModule } from "./auth.module";
-import { NotFoundException } from "@nestjs/common";
+// config
+import appConfig from "../../config/app.config";
+import authConfig from "../../config/auth.config";
+import fileConfig from "../../config/file.config";
+import databaseConfig from "../../config/database.config";
 
 const EMAIL = "ramzi@gmail.com";
 const PASSWORD = "ramzi";
@@ -21,7 +28,16 @@ describe("AuthResolver", () => {
         AuthModule,
         UsersModule,
         MongooseTestModule(),
-        ConfigModule.forRoot({ isGlobal: true }),
+        ConfigModule.forRoot({
+          isGlobal: true,
+          load: [
+            appConfig,
+            authConfig,
+            fileConfig,
+            databaseConfig,
+          ],
+          envFilePath: ['.env'],
+        }),
       ],
     }).compile();
 
@@ -32,6 +48,7 @@ describe("AuthResolver", () => {
   it("should be defined", () => {
     expect(resolver).toBeDefined();
   });
+
   it("should return a valid token", async () => {
     const user = await userService.create({
       confirmPassword: PASSWORD,
@@ -47,6 +64,7 @@ describe("AuthResolver", () => {
     expect(token).toBeTruthy();
     await userService.delete({ _id: user.id });
   });
+
   it("should throw exception when not logged in", async () => {
     await expect(async () => {
       await resolver.login({

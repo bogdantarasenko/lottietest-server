@@ -9,7 +9,7 @@ import { FileStorage, Visibility } from '@flystorage/file-storage';
 import { AllConfigType } from 'src/config/config.type';
 
 @Injectable()
-export class FileUploadService {
+export class FilesService {
   private storageType: string;
   private storage?: FileStorage;
   private s3?: AWS.S3;

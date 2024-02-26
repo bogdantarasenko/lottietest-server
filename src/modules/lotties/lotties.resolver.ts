@@ -9,32 +9,32 @@ import {
 // @ts-ignore
 import { GraphQLUpload, FileUpload } from 'graphql-upload';
 
-import { LottieLoader } from "../loaders/lottie.loader";
-import { LottiesService } from "../services/lotties.service";
-import { CurrentUser, Public } from "../../auth/decorators";
+import { LottieLoader } from "./lottie.loader";
+import { LottiesService } from "./lotties.service";
+import { CurrentUser, Public } from "../auth/decorators";
 
 // common
 import { Pagination } from "../../common/pagination/pagination.type";
 import { PaginationArgs } from "../../common/pagination/pagination.args";
 
 // schema
-import { User } from "../../users/users.schema";
-import { Lottie } from "../schemas/lottie.schema";
+import { User } from "../users/users.schema";
+import { Lottie } from "./lottie.schema";
 
 // dto
-import { Success } from "../dto/success.type";
-import { PaginatedLottie } from "../dto/lottie/lottie.type";
-import { LottieIdInput } from "../dto/lottie/lottie-id.input";
-import { LottieFilterInput } from "../dto/lottie/lottie-filter.input";
-import { CreateLottieInput } from "../dto/lottie/create-lottie.input";
-import { FileUploadService } from "src/files/files.service";
+import { Success } from "./dto/success.type";
+import { PaginatedLottie } from "./dto/lottie/lottie.type";
+import { LottieIdInput } from "./dto/lottie/lottie-id.input";
+import { LottieFilterInput } from "./dto/lottie/lottie-filter.input";
+import { CreateLottieInput } from "./dto/lottie/create-lottie.input";
+import { FilesService } from "../../modules/files/files.service";
 
 @Resolver(() => Lottie)
 export class LottieResolver {
   constructor(
     private readonly lottieLoader: LottieLoader,
     private readonly lottieService: LottiesService,
-    private readonly fileUploadService: FileUploadService,
+    private readonly fileUploadService: FilesService,
   ) { }
 
   @ResolveField(() => User)

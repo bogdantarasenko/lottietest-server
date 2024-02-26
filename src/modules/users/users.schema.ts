@@ -2,7 +2,7 @@ import { Document } from "mongoose";
 import { HideField } from "@nestjs/graphql";
 import { ObjectType } from "@nestjs/graphql";
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { BaseSchema } from "../common/base.schema";
+import { BaseSchema } from "../../common/base.schema";
 
 @ObjectType()
 @Schema({ timestamps: true })

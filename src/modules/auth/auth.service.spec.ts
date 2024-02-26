@@ -1,11 +1,17 @@
 import { Test, TestingModule } from "@nestjs/testing";
-import { AuthService } from "./auth.service";
 import { UsersService } from "../users/users.service";
+import { ConfigModule } from "@nestjs/config";
+import { AuthService } from "./auth.service";
 import { AuthModule } from "./auth.module";
 import {
   closeMongoConnection,
   MongooseTestModule,
-} from "../common/mongoose-testing.module";
+} from "../../common/mongoose-testing.module";
+// config
+import appConfig from "../../config/app.config";
+import authConfig from "../../config/auth.config";
+import fileConfig from "../../config/file.config";
+import databaseConfig from "../../config/database.config";
 
 let authService: AuthService;
 
@@ -16,7 +22,20 @@ describe("AuthService", () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [],
-      imports: [AuthModule, MongooseTestModule()],
+      imports: [
+        AuthModule,
+        MongooseTestModule(),
+        ConfigModule.forRoot({
+          isGlobal: true,
+          load: [
+            appConfig,
+            authConfig,
+            fileConfig,
+            databaseConfig,
+          ],
+          envFilePath: ['.env'],
+        }),
+      ],
     }).compile();
 
     authService = module.get<AuthService>(AuthService);
