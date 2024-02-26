@@ -3,7 +3,10 @@ import { User } from "../../users/users.schema";
 
 @InputType()
 export class LoginInputType {
+  @Field(() => String)
   email: string;
+
+  @Field(() => String)
   password: string;
 }
 

@@ -54,6 +54,7 @@ import { LottiesModule } from "./modules/lotties/lottie.module";
             return { authorization };
           },
         },
+        cors: false,
         context: ({ connection, req }) =>
           req ? req : { req: { headers: connection.context } },
       }),

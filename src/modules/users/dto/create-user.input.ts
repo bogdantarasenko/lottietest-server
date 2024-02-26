@@ -1,6 +1,6 @@
 import { IsNotEmpty, MinLength } from "class-validator";
 
-import { InputType, OmitType } from "@nestjs/graphql";
+import { Field, InputType, OmitType } from "@nestjs/graphql";
 
 import { User } from "../users.schema";
 
@@ -10,9 +10,11 @@ export class CreateUserInput extends OmitType(
   ["isActive", "id", "createdAt", "updatedAt"],
   InputType,
 ) {
+  @Field(() => String)
   @IsNotEmpty()
   confirmPassword: string;
 
+  @Field(() => String)
   @IsNotEmpty()
   @MinLength(5)
   password: string;
