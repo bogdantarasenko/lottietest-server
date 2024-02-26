@@ -108,7 +108,7 @@ input LoginInputType {
 scalar Upload
 
 input CreateLottieInput {
-  tags: String
+  tags: [String!]
 }
 
 input LottieIdInput {
