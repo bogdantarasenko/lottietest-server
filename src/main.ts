@@ -23,10 +23,10 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalFilters(new MongoErrorFilter());
-  // app.enableCors({
-  //   origin: configService.get("app").frontendDomain,
-  //   credentials: true,
-  // });
+  app.enableCors({
+    origin: configService.get("app").frontendDomain,
+    credentials: true,
+  });
   app.use(
     graphqlUploadExpress({
       maxFiles: 5,
