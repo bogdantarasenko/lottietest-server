@@ -9,6 +9,7 @@ import { BaseSchema } from "../../common/base.schema";
 @ObjectType()
 @Schema({ timestamps: true })
 export class Lottie extends BaseSchema {
+  @Field(type => String)
   @Prop({ unique: true, required: false, default: null })
   path?: string;
 

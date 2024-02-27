@@ -26,7 +26,7 @@ import { LottiesModule } from "./modules/lotties/lottie.module";
         fileConfig,
         databaseConfig,
       ],
-      envFilePath: ['.env'],
+      envFilePath: [`.env.${process.env.NODE_ENV || 'development'}`],
     }),
     MongooseModule.forRootAsync({
       useFactory: async (configService: ConfigService<AllConfigType>) => ({

@@ -43,12 +43,6 @@ export class LottieResolver {
   }
 
   @Public()
-  @Query(() => String, { description: "Check if the GraphQL endpoint is running" })
-  async ping(): Promise<string> {
-    return "pong";
-  }
-
-  @Public()
   @Query(() => [String], { description: "get all tags from lotties" })
   async getTags(): Promise<string[]> {
     return this.lottieService.getTags();
