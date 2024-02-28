@@ -10,9 +10,9 @@ import { AllConfigType } from 'src/config/config.type';
 
 @Injectable()
 export class FilesService {
+  private s3?: AWS.S3;
   private storageType: string;
   private storage?: FileStorage;
-  private s3?: AWS.S3;
 
   constructor(private readonly configService: ConfigService<AllConfigType>) {
     this.storageType = this.configService.get('file').driver;

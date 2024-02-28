@@ -3,10 +3,10 @@ require('dotenv').config({ path: '.env.test' });
 import { ConfigModule } from "@nestjs/config";
 import { NotFoundException } from "@nestjs/common";
 import { Test, TestingModule } from "@nestjs/testing";
-import { AuthResolver } from "./auth.resolver";
 import { MongooseTestModule } from "../../common/mongoose-testing.module";
 import { UsersService } from "../users/users.service";
 import { UsersModule } from "../users/users.module";
+import { AuthResolver } from "./auth.resolver";
 import { AuthModule } from "./auth.module";
 // config
 import appConfig from "../../config/app.config";
@@ -36,7 +36,7 @@ describe("AuthResolver", () => {
             fileConfig,
             databaseConfig,
           ],
-          envFilePath: ['.env'],
+          envFilePath: ['.env.test'],
         }),
       ],
     }).compile();

@@ -24,7 +24,7 @@ describe("LottieResolver", () => {
         ConfigModule.forRoot({
           isGlobal: true,
           load: [appConfig, authConfig, fileConfig, databaseConfig],
-          envFilePath: ['.env'],
+          envFilePath: ['.env.test'],
         }),
       ],
       providers: [],
@@ -35,5 +35,14 @@ describe("LottieResolver", () => {
 
   it("should be defined", () => {
     expect(resolver).toBeDefined();
+  });
+
+  it("should return an array of tags", async () => {
+    const tags = ["tag1", "tag2"];
+    jest.spyOn(resolver, "getTags").mockResolvedValue(tags);
+
+    const result = await resolver.getTags();
+
+    expect(result).toEqual(tags);
   });
 });

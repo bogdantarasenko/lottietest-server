@@ -26,7 +26,7 @@ describe("UsersResolver", () => {
             fileConfig,
             databaseConfig,
           ],
-          envFilePath: ['.env'],
+          envFilePath: ['.env.test'],
         }),
       ],
     }).compile();
@@ -34,8 +34,16 @@ describe("UsersResolver", () => {
     resolver = module.get<UsersResolver>(UsersResolver);
   });
 
-
   it("should be defined", () => {
     expect(resolver).toBeDefined();
+  });
+
+  it("should create a new user", async () => {
+    const userInput = { username: "John Doe", email: "john@example.com", password: "password123", confirmPassword: "password123" };
+    const createdUser = await resolver.createUser(userInput);
+
+    expect(createdUser).toBeDefined();
+    expect(createdUser.email).toEqual(userInput.email);
+    expect(createdUser.username).toEqual(userInput.username);
   });
 });
