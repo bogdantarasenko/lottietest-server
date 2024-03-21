@@ -53,6 +53,9 @@ Enables efficient data fetching and manipulation, reducing over-fetching and und
 email:    johndoe@gmail.com
 password: johndoe@gmail.com
 
+email:    bogdantarasenko@gmail.com
+password: bogdantarasenko@gmail.com
+
 ### Installation
 
 Clone the repository and install dependencies:
